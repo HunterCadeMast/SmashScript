@@ -1,0 +1,21 @@
+program : statement*
+
+statement : move_definition
+
+move_definition : "Player" 1 "move" move_name
+
+move_name : attack | special | smash | tilt | grab
+
+special : "special" move_direction_with_neutral
+
+smash : "smash" move_direction
+
+tilt : "tilt" move_direction
+
+grab : "grab" (attack | throw_direction | ("attack" "then" throw_direction))
+
+throw_direction : "throw" move_direction
+
+move_direction : "up" | "down" | "left" | "right"
+
+move_direction_with_neutral : move_direction | "neutral"
